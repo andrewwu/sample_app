@@ -32,6 +32,12 @@ describe "Static pages" do
         end
       end
 
+      describe "micropost count" do
+
+        specify { user.microposts.count.should == 2}
+        specify { page.should have_selector('span', text: "2 microposts") }
+      end
+
       describe "micropost pagination" do
 
         before(:all) { 30.times { FactoryGirl.create(:micropost, user: user, content: "Lorem ipsum") } }
